@@ -33,7 +33,7 @@ services:
       timeout: 20s
       retries: 1
   online-school-auth-api:
-    image: mycodeschool/online-school-auth-api:latest
+    image: mycodeschool/online-school-auth-api:05.03.2025.17.52.22
     networks:
       - mynet
     environment:
