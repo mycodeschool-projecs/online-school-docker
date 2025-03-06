@@ -56,30 +56,30 @@ services:
   #     - mysql
   #     - zipkin
   #     - logstash
-  # gateway:
-  #   image: floredenis2001/courses-gateway:11.11.2024.22.15.16
-  #   ports:
-  #     - "8081:8081"
-  #   networks:
-  #     - mynet
-  #   environment:
-  #     SPRING_PROFILES_ACTIVE: docker
-  #   depends_on:
-  #     - mysql
-  #     - zipkin
-  #     - logstash
-  # client:
-  #   image: floredenis2001/courses-client:11.11.2024.22.20.27
-  #   environment:
-  #     REACT_APP_ENV: production
-  #   ports:
-  #     - "3000:3000"
-  #   networks:
-  #     - mynet
-  #   depends_on:
-  #     - gateway
-  #     - courses-auth-service
-  #     - courses-microservice
+  gateway:
+     image: mycodeschool/online-school-gateway-api:latest
+     ports:
+       - "8081:8081"
+     networks:
+       - mynet
+     environment:
+       SPRING_PROFILES_ACTIVE: docker
+     depends_on:
+       - mysql
+#       - zipkin
+#       - logstash
+  client:
+     image: mycodeschool/online-school-client:latest
+     environment:
+       REACT_APP_ENV: production
+     ports:
+       - "3000:3000"
+     networks:
+       - mynet
+     depends_on:
+       - gateway
+       - online-school-auth-api
+#       - courses-microservice
   # zipkin:
   #   image: openzipkin/zipkin
   #   container_name: zipkin
