@@ -44,7 +44,7 @@ services:
       - mysql
   #     - zipkin
   #     - logstash
-  courses-microservice:
+  online-school-course-api:
      image: mycodeschool/online-school-course-api:09.03.2025.19.09.44
      networks:
        - mynet
@@ -56,7 +56,7 @@ services:
        - mysql
 #       - zipkin
 #       - logstash
-  gateway:
+  online-school-gateway-api:
      image: mycodeschool/online-school-gateway-api:06.03.2025.16.26.45
      ports:
        - "8081:8081"
@@ -68,7 +68,7 @@ services:
        - mysql
 #       - zipkin
 #       - logstash
-  client:
+  online-school-client:
      image: mycodeschool/online-school-client:06.03.2025.16.26.20
      environment:
        REACT_APP_ENV: production
@@ -77,9 +77,9 @@ services:
      networks:
        - mynet
      depends_on:
-       - gateway
+       - online-school-gateway-api
        - online-school-auth-api
-#       - courses-microservice
+       - online-school-course-api
   # zipkin:
   #   image: openzipkin/zipkin
   #   container_name: zipkin
