@@ -45,7 +45,7 @@ services:
   #     - zipkin
   #     - logstash
   online-school-course-api:
-     image: mycodeschool/online-school-course-api:09.03.2025.19.09.44
+     image: mycodeschool/online-school-course-api:09.03.2025.19.38.29
      networks:
        - mynet
      environment:
